@@ -1,0 +1,31 @@
+.no-resize {
+    resize: none;
+}
+
+.no-padding {
+    padding: 0px;
+}
+
+.error-msg {
+    color: red;
+}
+
+.timestamp {
+    color: grey;
+    font-size: small;
+}
+
+/* preserve whitespaces instead of collapse. */
+.content-paragraph {
+    white-space: pre-wrap;
+    margin-bottom: 0px;
+}
+
+.like-btn {
+    width: 100px;
+}
+
+.icon-24 {
+    width: 24px;
+    height: 24px;
+}

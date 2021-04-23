@@ -1,0 +1,15 @@
+# start services with: $ docker-compose up
+# access command line of the web service container and apply migrations.
+# access website with: http://0.0.0.0:8000/flights/
+services:
+    db:
+        image: postgres
+        environment:
+            - POSTGRES_PASSWORD=postgres
+
+    web:
+        build: .
+        volumes:
+            - .:/usr/src/app
+        ports:
+            - "8000:8000"

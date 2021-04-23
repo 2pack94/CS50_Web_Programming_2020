@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ page }} - Encyclopedia
+{% endblock %}
+
+{% block body %}
+    {% if page_found %}
+        <a href="{% url 'edit_page' page %}">Edit</a>
+    {% endif %}
+    <!-- Interpret page_content as HTML. page_content was converted from Markdown to HTML. -->
+    {% autoescape off %}
+    {{ page_content }}
+    {% endautoescape %}
+{% endblock %}

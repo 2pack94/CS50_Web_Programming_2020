@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <title>Counter</title>
+    </head>
+    <body>
+        <div id="app" />
+        <script type="text/babel">
+
+            class App extends React.Component {
+
+                constructor(props) {
+                    // initialize the parent React.Component class
+                    super(props);
+                    // The only place where this.state can be assigned is the constructor.
+                    // To update the state this.setState must be used.
+                    this.state = {
+                        count: 0
+                    };
+                }
+
+                render() {
+                    // the onClick attribute is React specific (camelCase)
+                    return (
+                        <div>
+							<h1>{this.state.count}</h1>
+							<button onClick={this.count}>Count</button>
+                        </div>
+                    );
+                }
+
+                // The public class fields syntax ensures `this` is bound within the callback.
+                // If the new state depends on the current state, use a function inside setState
+                // to have access to the current state. Using this.state.value will not work as intended.
+                // Otherwise a JS object can be passed to setState.
+                count = () => {
+                    this.setState(state => ({
+                        count: state.count + 1
+                    }));
+                }
+            }
+
+            ReactDOM.render(<App />, document.querySelector("#app"));
+
+        </script>
+    </body>
+</html>

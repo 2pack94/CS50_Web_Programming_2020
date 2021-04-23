@@ -1,0 +1,128 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+{% if listing.is_closed %}
+    This Auction is closed.
+    {% if bids.0 %}
+        {% if bids.0.bidder == user %} You {% else %} {{ bids.0.bidder }} {% endif %}
+        won the Auction with a bid of {{ bids.0.amount }}€.
+    {% endif %}
+{% endif %}
+<h2>{{ listing.title }}</h2>
+<div class="my-2">
+    <form method="post">
+        {% csrf_token %}
+        {{ form_wishlist }}
+        <button type="submit" class="btn btn-secondary btn-sm" name="wishlist" value="wishlist">
+            {% if listing in user.wishlisted_listings.all %}
+                Remove from Wishlist
+            {% else %}
+                Add to Wishlist
+            {% endif %}
+        </button>
+    </form>
+</div>
+<div class="row my-2">
+    <div class="col-4">
+        <img src="{{ listing.image_link }}" class="img-fluid" alt="No Picture" style="max-height: 350px;">
+    </div>
+</div>
+<div class="my-2">
+    <h3>{{ listing.price }}€</h3>
+</div>
+<div class="my-2">
+    <b>Description:</b>
+    <div>
+        {{ listing.description }}
+    </div>
+</div>
+{% if not listing.is_closed %}
+    <div class="my-2">
+        <b>Bid:</b>
+        <div>
+            {% if not user.is_authenticated %}
+                Please Log in to make a bid.
+            {% endif %}
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form_bid }}
+            </div>
+            <input class="btn btn-primary" type="submit" value="Place Bid">
+        </form>
+    </div>
+{% endif %}
+<div class="my-2">
+    <b>Details:</b>
+    <div>
+        <ul>
+            <li>Listed by: {{ listing.creator }}</li>
+            {% if listing.category %}
+                <li>Category: {{ listing.category }}</li>
+            {% else %}
+                <li>No Category listed</li>
+            {% endif %}
+        </ul>
+    </div>
+<div class="my-2">
+    <b>Bid History:</b>
+    <div>
+        {% if bids.0 %}
+            {{ bids|length }} bid(s) so far.
+            {% if bids.0.bidder == request.user %} Your {% else %} {{ bids.0.bidder }}'s {% endif %}
+            bid is the current bid.
+        {% else %}
+            No bids so far.
+        {% endif %}
+        <ul>
+            {% for bid in bids %}
+                <li>{{ bid.bidder }} bid {{ bid.amount }}€ on {{ bid.time_created }}</li>
+            {% endfor %}
+            <li>Starting Price: {{ listing.starting_price }}€</li>
+        </ul>
+    </div>
+</div>
+{% if listing.creator == user and not listing.is_closed %}
+    <div class="my-2">
+        <form method="post">
+            {% csrf_token %}
+            {{ form_close }}
+            <button type="submit" class="btn btn-primary" name="close" value="close_auction">
+                Close Auction
+            </button>
+        </form>
+    </div>
+{% endif %}
+<div class="my-2">
+    <b>Comments:</b>
+    <div>
+        {% if not listing.is_closed %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form_comment }}
+                <div>
+                    <button type="submit" class="btn btn-primary" name="comment" value="comment">
+                        Comment
+                    </button>
+                </div>
+            </form>
+        {% endif %}
+        <div class="my-2">
+            {% for comment in comments %}
+                <div class="container-fluid border-comment">
+                    <div>
+                        <b>{{ comment.poster }}</b> <small>{{ comment.time_created }}</small>
+                    </div>
+                    <div>
+                        {{ comment.content }}
+                    </div>
+                </div>
+            {% empty %}
+                <ul><li>No Comments.</li></ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

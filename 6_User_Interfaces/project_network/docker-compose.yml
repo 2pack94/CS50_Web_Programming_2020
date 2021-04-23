@@ -1,0 +1,20 @@
+services:
+    backend:
+        build: ./backend/social_network
+        volumes:
+            - ./backend/social_network:/usr/src/app
+
+    frontend:
+        build: ./frontend/social_network
+        volumes:
+            - ./frontend/social_network:/usr/src/app
+        depends_on:
+            - backend
+
+    reverse_proxy:
+        build: ./nginx
+        ports:
+            - 81:80
+        depends_on:
+            - backend
+            - frontend

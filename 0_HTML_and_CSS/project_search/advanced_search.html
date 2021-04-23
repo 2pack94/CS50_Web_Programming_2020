@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Advanced Search</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link  rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="image_search.html">Images</a>
+                </li>
+            </ul>
+        </nav>
+        <h4 id="adv-search-heading">Advanced Search</h4>
+        <hr>
+        <form action="https://google.com/search">
+            <!-- instead of using the bootstrap grid system, use CSS Flexbox here -->
+            <div id="adv-search-container">
+                <div class="adv-search-row">
+                    <div class="adv-search-col-1">
+                        <span class="adv-search-tbl-heading">Find pages with...</span>
+                    </div>
+                    <div class="adv-search-col-2">
+                    </div>
+                    <div class="adv-search-col-3">
+                        <span class="adv-search-tbl-heading">To do this in the search box.</span>
+                    </div>
+                </div>
+                <div class="adv-search-row">
+                    <div class="adv-search-col-1">
+                        <!-- when clicking a label the associated form element gets focused. -->
+                        <label for="all-words-input">all these words:</label>
+                    </div>
+                    <div class="adv-search-col-2">
+                        <input id="all-words-input" class="form-control" type="text" name="as_q">
+                    </div>
+                    <div class="adv-search-col-3">
+                        Type the important words:
+                        <span class="adv-search-ex">
+                            tri-colour rat terrier
+                        </span>
+                    </div>
+                </div>
+                <div class="adv-search-row">
+                    <div class="adv-search-col-1">
+                        <label for="exact-words-input">this exact word or phrase:</label>
+                    </div>
+                    <div class="adv-search-col-2">
+                        <input id="exact-words-input" class="form-control" type="text" name="as_epq">
+                    </div>
+                    <div class="adv-search-col-3">
+                        Put exact words in quotes:
+                        <span class="adv-search-ex">
+                            "rat terrier"
+                        </span>
+                    </div>
+                </div>
+                <div class="adv-search-row">
+                    <div class="adv-search-col-1">
+                        <label for="any-words-input">any of these words:</label>
+                    </div>
+                    <div class="adv-search-col-2">
+                        <input id="any-words-input" class="form-control" type="text" name="as_oq">
+                    </div>
+                    <div class="adv-search-col-3">
+                        Type OR between all the words you want:
+                        <span class="adv-search-ex">
+                            miniature OR standard
+                        </span>
+                    </div>
+                </div>
+                <div class="adv-search-row">
+                    <div class="adv-search-col-1">
+                        <label for="none-words-input">none of these words:</label>
+                    </div>
+                    <div class="adv-search-col-2">
+                        <input id="none-words-input" class="form-control" type="text" name="as_eq">
+                    </div>
+                    <div class="adv-search-col-3">
+                        Put a minus sign just before words that you don't want:
+                        <span class="adv-search-ex">
+                            -rodent, -"Jack Russell"
+                        </span>
+                    </div>
+                </div>
+                <div class="adv-search-row">
+                    <div class="adv-search-col-1">
+                    </div>
+                    <div id="adv-search-btn" class="adv-search-col-2">
+                        <input class="btn btn-primary btn-sm" type="submit" value="Advanced Search">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

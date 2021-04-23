@@ -1,0 +1,21 @@
+body {
+    padding: 10px;
+}
+
+td, th {
+    padding: 5px;
+}
+
+/* used for comments on a listing */
+.border-comment{
+    border-style: solid;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    border-width: 1px;
+}
+
+/* selects errors from the django form class */
+.errorlist {
+    color: red;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Currency</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            document.querySelector('form').onsubmit = function() {
+                // Send an AJAX (Asynchronous JavaScript and XML) request to the webserver
+                // (retrieves data asynchronously/ in the background).
+                // fetch() returns a promise containing a Response object.
+                // It will throw a TypeError when a network error is encountered
+                // (a HTTP Status Code like 404 does not constitute a network error) and catch() will run.
+                // response.json() extracts the JSON body content from the response.
+                // It returns another promise. The next then() is bound to that promise.
+                fetch("https://api.exchangeratesapi.io/latest?base=USD")
+                .then(response => response.json())
+                .then(data => {
+                    const currency = document.querySelector('#currency').value.toUpperCase();
+                    const rate = data.rates[currency];
+                    if (rate !== undefined) {
+                        const result = `1 USD is equal to ${rate.toFixed(3)} ${currency}`;
+                        document.querySelector('#result').innerHTML = result;
+                    } else {
+                        document.querySelector('#result').innerHTML = 'Invalid currency.';
+                    }
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                });
+                // prevent form from submitting
+                return false;
+            }
+        });
+    </script>
+    <body>
+        <form>
+            <input id="currency" placeholder="Currency">
+            <input type="submit" value="Convert">
+        </form>
+        <div id="result">
+        </div>
+    </body>
+</html>

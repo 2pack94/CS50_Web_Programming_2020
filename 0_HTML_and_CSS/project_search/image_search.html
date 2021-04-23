@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Search Images</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link  rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="advanced_search.html">Advanced Search</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container">
+            <h1 id="index-heading" class="text-center display-3">Search</h1>
+            <div id="logo-subtext" class="font-weight-light">
+                images
+            </div>
+            <form action="https://google.com/search">
+                <!-- row flex-nowrap keeps the search icon always on the same line as the input field -->
+                <div id="search-box" class="row flex-nowrap border rounded-pill m-4 px-3 mx-auto">
+                    <input id="search-input" class="form-control" type="text" name="q">
+                    <input type="hidden" name="tbm" value="isch">
+                    <input id="image-search-icon" class="my-auto ml-3 mr-1" type="image" src="assets/search-icon.png">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

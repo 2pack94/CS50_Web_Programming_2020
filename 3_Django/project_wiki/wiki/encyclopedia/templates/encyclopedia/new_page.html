@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page - Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <!-- render form fields manually (instead of just using {{ form }})
+            to have more styling options -->
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+            {{ form.title.errors }}
+        </div>
+        <div class="fieldWrapper">
+            <div>{{ form.content.label_tag }}</div>
+            {{ form.content }}
+            {{ form.content.errors }}
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

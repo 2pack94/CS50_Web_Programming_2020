@@ -1,0 +1,38 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<!-- define "block index" so this content can be imported somewhere else -->
+{% block index %}
+
+<h2>{{ heading }}</h2>
+
+{% for listing in listings %}
+    <div class="row m-3">
+        <div class="container p-3 border rounded">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{ listing.image_link }}" class="img-fluid" alt="No Picture" style="max-height: 265px;">
+                </div>
+                <div class="col-8">
+                    <div>
+                        <h3><a href="{% url 'detail' listing.id %}">{{ listing.title }}</a></h3>
+                    </div>
+                    <div>
+                        <b>Price:</b>&nbsp;{{ listing.price }}€
+                    </div>
+                    <div>
+                        <p class="text-justify">{{ listing.description }}</p>
+                    </div>
+                    <div>
+                        <p><small>Created {{ listing.time_created }}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% empty %}
+    <ul><li>No Listings.</li></ul>
+{% endfor %}
+
+{% endblock %}
+{% endblock %}

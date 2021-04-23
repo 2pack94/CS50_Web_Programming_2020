@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+
+            document.addEventListener('DOMContentLoaded', () => {
+                // setInterval calls the function at a specified interval (in milliseconds).
+                setInterval(count, 1000);
+            });
+
+            let counter = 0;
+
+            function count() {
+                counter++;
+                document.querySelector('#counter').innerHTML = counter;
+            }
+
+        </script>
+        <title>Intervals</title>
+    </head>
+    <body>
+        <h1 id="counter">0</h1>
+    </body>
+</html>
+

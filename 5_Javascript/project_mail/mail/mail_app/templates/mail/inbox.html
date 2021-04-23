@@ -1,0 +1,69 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <h2 id="user">{{ request.user.email }}</h2>
+
+    <!-- The Javascript code that runs when clicking the buttons displays a view and hides the others.
+    Instead of rendering another template, the backend provides API routes to send and receive JSON data.
+    E-Mails and Users are stored in the backend. By sending requests to the API from the Javascript code,
+    data can be modified or retrieved for display in this single-page-app.
+    The benefit is that only the portions of that page that change are loaded. -->
+    <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
+    <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
+    <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
+    <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
+    <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
+    <hr>
+
+    <!-- Each top-level div element defines a view. Only one view is active at a time. -->
+    <div id="emails-view">
+        <h3 id="mailbox-header"></h3>
+        <div id="emails-list">
+        </div>
+    </div>
+
+    <div id="email-detail-view">
+        <button class="btn btn-sm btn-outline-secondary" id="back-to-mailbox">Back</button>
+        <button class="btn btn-sm btn-outline-secondary" id="mark-unread">Mark as Unread</button>
+        <button class="btn btn-sm btn-outline-secondary" id="archive">Archive</button>
+        <h3 id="email-detail-header"></h3>
+        <div class="row">
+            <div class="col-1">From:</div>
+            <div id="email-detail-from" class="col-8">
+            </div>
+            <div id="email-detail-time" class="col-3 text-right timestamp">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">To:</div>
+            <div id="email-detail-to" class="col-11">
+            </div>
+        </div>
+        <div class="my-3" id="email-detail-body">
+        </div>
+        <button class="btn btn-sm btn-primary" id="reply">Reply</button>
+    </div>
+
+    <div id="compose-view">
+        <h3>New Email</h3>
+        <form method="post" id="compose-form">
+            <div class="form-group">
+                To: <input id="compose-recipients" class="form-control">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="compose-subject" placeholder="Subject">
+            </div>
+            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+            <div id="send-email-error">
+            </div>
+            <div class="my-3">
+                <input type="submit" class="btn btn-primary" value="Send E-Mail">
+            </div>
+        </form>
+    </div>
+{% endblock %}

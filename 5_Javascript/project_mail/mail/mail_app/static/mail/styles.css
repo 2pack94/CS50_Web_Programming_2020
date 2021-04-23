@@ -1,0 +1,17 @@
+textarea {
+    min-height: 400px;
+}
+
+.timestamp {
+    color: grey;
+}
+
+#send-email-error {
+    color: red;
+}
+
+/* display the hand icon for the mouse cursor when hovering over an email container */
+#emails-list .container
+{
+    cursor: pointer;
+}

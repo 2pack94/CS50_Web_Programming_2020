@@ -1,0 +1,108 @@
+label {
+    margin-bottom: 0px;
+}
+
+#search-box {
+    max-width: 600px;
+}
+
+/* highlight the search box on mouse hover and when the child input field is selected */
+#search-box:hover,
+#search-box:focus-within
+{
+    box-shadow: 0px 0px 4px grey;
+}
+
+/* remove the highlighting and the border of the search input field */
+#search-input {
+    border: 0;
+    box-shadow: none;
+}
+
+/* CSS Units: https://www.w3schools.com/cssref/css_units.asp */
+#index-heading {
+    margin-top: 20vh;
+}
+
+#logo-subtext {
+    /* center horizontally */
+    margin: auto;
+    margin-top: -25px;
+    width: 100px;
+    /* The property "left" refers to the "position: relative" property.
+    Move this amount to the right from the current position */
+    position: relative;
+    left: 108px;
+}
+
+#image-search-icon {
+    width: 24px;
+    height: 24px;
+}
+
+#adv-search-heading {
+    color: #d93025;
+    /* margin (top bottom) and (left right) */
+    margin: 25px 45px;
+}
+
+#adv-search-container {
+    max-width: 1140px;
+    min-width: 200px;
+    /* margin top right bottom left */
+    margin: 40px 2% 0 45px;
+}
+
+#adv-search-btn {
+    display: flex;
+    justify-content: right;
+}
+
+.adv-search-tbl-heading {
+    font-size: 16px;
+}
+
+.adv-search-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.adv-search-col-1 {
+    display: flex;
+    align-items: center;
+    min-width: 167px;
+    width: 16%;
+    height: 45px;
+    font-size: 14px;
+}
+
+.adv-search-col-2 {
+    display: flex;
+    align-items: center;
+    min-width: 167px;
+    width: 50%;
+}
+
+.adv-search-col-3 {
+    display: flex;
+    align-items: center;
+    width: 32%;
+    min-width: 160px;
+    font-size: 12px;
+    color: #555;
+    padding-left: 15px;
+}
+
+.adv-search-ex {
+    /* children of a flex container are forced to have a block display type.
+    To circumvent this, specify display: contents */
+    display: contents;
+    font-family: "Courier New", monospace;
+}
+
+/* hide the third column if the screen is this wide or less */
+@media (max-width: 1070px) {
+    .adv-search-col-3 {
+        display: none;
+    }
+}

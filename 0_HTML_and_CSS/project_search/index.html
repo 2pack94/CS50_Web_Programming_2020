@@ -1,0 +1,58 @@
+<!--
+The forms action attribute specifies the form-handler.
+The default method when submitting the form is GET.
+GET appends the form data to the URL (after the "?" symbol), in name/value pairs (called query string).
+GET is useful for non-secure data and when the user wants to copy the URL to save the query string.
+Google search uses the name "q" to identify the search string.
+Any form element inside the <form> tag will become a GET parameter when submitting
+(if it has name and value attributes).
+List of form elements and form attributes: https://www.w3schools.com/tags/tag_form.asp
+
+By using the Inspector and Network monitor from the developer tools of the browser,
+the HTML structure of the page and the request and response data can be viewed.
+I'm Feeling Lucky Search:
+    Add an additional argument with the name "btnI" and any value to the query string.
+    However Google will show a Redirect Notice when trying to access this URL from outside of Google.
+Google Images:
+    Add the following argument to the query string: tbm=isch
+Advanced Search:
+    Field Names:
+        all these words: "as_q"
+        this exact word or phrase: "as_epq"
+        any of these words: "as_oq"
+        none of these words: "as_eq"
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Search</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link  rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Navbar: https://getbootstrap.com/docs/4.6/components/navbar/ -->
+        <nav class="navbar navbar-expand-sm">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="image_search.html">Images</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="advanced_search.html">Advanced Search</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container">
+            <h1 id="index-heading" class="text-center display-3">Search</h1>
+            <form action="https://google.com/search">
+                <div id="search-box" class="border rounded-pill m-4 px-3 mx-auto">
+                    <input id="search-input" class="form-control" type="text" name="q">
+                </div>
+                <div class="text-center">
+                    <input class="btn btn-light mx-auto" type="submit" value="Google Search">
+                    <input class="btn btn-light mx-auto" type="submit" name="btnI" value="I'm Feeling Lucky">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
